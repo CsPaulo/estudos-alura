@@ -6,14 +6,14 @@
 }
 
 body {
-  /* height: 100vh; */
   box-sizing: border-box;
   background-color: #000000;
   color: #f6f6f6;
+  height: 100%;
 }
 
 .cabecalho {
-  padding: 2% 0 0 15%;
+  padding: 2% 0 0 10%;
 }
 
 .cabecalho__menu {
@@ -34,11 +34,12 @@ body {
 }
 
 .apresentacao {
-  padding: 5% 15%;
+  padding: 5% 10%;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
+
 .apresentacao__conteudo {
   width: 615px;
   display: flex;
@@ -65,7 +66,6 @@ body {
 }
 
 .apresentacao__links__link {
-  /* background-color: #22d4fd; */
   display: flex;
   justify-content: center;
   gap: 16px;
@@ -89,7 +89,6 @@ body {
 
 .apresentacao__links__link:hover {
   background-color: #272727;
-  border: 3.5px solid #22d4fd;
 }
 
 .rodape {
@@ -100,4 +99,5 @@ body {
   font-family: 'Montserrat', sans-serif;
   font-size: 24px;
   font-weight: 400;
+  margin-top: auto;
 }

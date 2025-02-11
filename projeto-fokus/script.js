@@ -7,7 +7,12 @@ const titulo = document.querySelector('.app__title');
 const botoes = document.querySelectorAll('.app__card-button');
 const startPauseBt = document.querySelector('#start-pause');
 const musicaFocoInput = document.querySelector('#alternar-musica');
+const iniciarOuPausarBt = document.querySelector('#start-pause span');
+const iniciarOuPausarBtIcon = document.querySelector('#start-pause img');
 const musica = new Audio('/sons/luna-rise-part-one.mp3');
+const audioPlay = new Audio('/sons/play.wav');
+const audioPause = new Audio('/sons/pause.mp3');
+const audioBeep = new Audio('/sons/beep.mp3');
 musica.loop = true;
 
 let tempoDecorridoEmSegundos = 5;
@@ -36,8 +41,8 @@ longoBt.addEventListener('click', () => {
 });
 
 function alterarContexto(contexto) {
-  botoes.forEach((contexto) => {
-    contexto.classList.remove('active');
+  botoes.forEach((botao) => {
+    botao.classList.remove('active');
   });
   html.setAttribute('data-contexto', contexto);
   banner.setAttribute('src', `/imagens/${contexto}.png`);
@@ -45,18 +50,15 @@ function alterarContexto(contexto) {
     case 'foco':
       titulo.innerHTML = `Otimize sua produtividade,<br />
           <strong class="app__title-strong">mergulhe no que importa.</strong>`;
-
       break;
     case 'descanso-curto':
       titulo.innerHTML = `Que tal dar uma respirada,<br />
           <strong class="app__title-strong">faça uma pausa curta.</strong>`;
       break;
-
     case 'descanso-longo':
-      titulo.innerHTML = `HOra de voltar à superfície,<br />
+      titulo.innerHTML = `Hora de voltar à superfície,<br />
           <strong class="app__title-strong">faça uma pausa longa.</strong>`;
       break;
-
     default:
       break;
   }
@@ -64,6 +66,7 @@ function alterarContexto(contexto) {
 
 const contagemRegressiva = () => {
   if (tempoDecorridoEmSegundos <= 0) {
+    //audioBeep.play();
     zerar();
     return;
   }
@@ -75,14 +78,20 @@ startPauseBt.addEventListener('click', iniciarOuPausar);
 
 function iniciarOuPausar() {
   if (intervalorId) {
+    audioPause.play();
     zerar();
     return;
   }
+  audioPlay.play();
   intervalorId = setInterval(contagemRegressiva, 1000);
+  iniciarOuPausarBt.textContent = 'Pausar';
+  iniciarOuPausarBtIcon.src = '/imagens/pause.png'; // Corrigido aqui
 }
 
 function zerar() {
   clearInterval(intervalorId);
+  iniciarOuPausarBt.textContent = 'Começar';
+  iniciarOuPausarBtIcon.src = '/imagens/play_arrow.png'; // Corrigido aqui
   intervalorId = null;
   if (tempoDecorridoEmSegundos === 0) {
     tempoDecorridoEmSegundos = 5;

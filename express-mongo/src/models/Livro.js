@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import { autorSchema } from "./Autor.js";
 
-const LivroShema = new mongoose.Schema(
+const LivroSchema = new mongoose.Schema(
   {
     id: {
       type: mongoose.Schema.Types.ObjectId,
@@ -24,6 +24,6 @@ const LivroShema = new mongoose.Schema(
   { versionKey: false }
 );
 
-const livro = mongoose.model("livros", LivroShema);
+const livro = mongoose.model("livros", LivroSchema);
 
 export default livro;

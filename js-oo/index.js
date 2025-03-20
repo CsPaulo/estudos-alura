@@ -4,13 +4,12 @@ import Docente from "./Docente.js"
 
 const novoUser = new User("Juliana", "j@j.com", "2024-01-01")
 console.log(novoUser.exibirInfos());
-novoUser.nome = "Juliana"
-console.log(novoUser.nome);
 
-// novoUser.#nome = "Márcia"
-// console.log(novoUser.exibirInfos());
-// console.log(novoUser.#nome);
+const dadosFicticios = User.exibirInfosGenericas('Cassio', 'c@c.com')
+console.log(dadosFicticios);
 
 // const novoAdmin = new Admin("Rodrigo", "r@r.com", "2024-01-01")
-// console.log(novoAdmin.nome);
-// console.log(novoAdmin.exibeNome());
+// console.log(novoAdmin.exibirInfos());
+
+// const novaDocente = new Docente("Ana", "a@a.com", "2024-01-01")
+// console.log(novaDocente.exibirInfos());
